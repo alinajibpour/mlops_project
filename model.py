@@ -1,19 +1,11 @@
 import torch
-
 from torch import nn
 
 
-
-
-
 class MyAwesomeModel(nn.Module):
-
     """My awesome model."""
 
-
-
     def __init__(self) -> None:
-
         super().__init__()
 
         self.conv1 = nn.Conv2d(1, 32, 3, 1)
@@ -26,10 +18,7 @@ class MyAwesomeModel(nn.Module):
 
         self.fc1 = nn.Linear(128, 10)
 
-
-
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-
         """Forward pass."""
 
         x = torch.relu(self.conv1(x))
@@ -53,18 +42,12 @@ class MyAwesomeModel(nn.Module):
         return x
 
 
-
-
-
 if __name__ == "__main__":
-
     model = MyAwesomeModel()
 
     print(f"Model architecture: {model}")
 
     print(f"Number of parameters: {sum(p.numel() for p in model.parameters())}")
-
-
 
     dummy_input = torch.randn(1, 1, 28, 28)
 

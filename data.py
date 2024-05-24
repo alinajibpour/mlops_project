@@ -1,25 +1,16 @@
 import matplotlib.pyplot as plt  # only needed for plotting
-
 import torch
-
 from mpl_toolkits.axes_grid1 import ImageGrid  # only needed for plotting
-
-
 
 DATA_PATH = "data/corruptmnist"
 
 
-
-
-
 def corrupt_mnist() -> tuple[torch.utils.data.Dataset, torch.utils.data.Dataset]:
-
     """Return train and test dataloaders for corrupt MNIST."""
 
     train_images, train_target = [], []
 
     for i in range(5):
-
         train_images.append(torch.load(f"{DATA_PATH}/train_images_{i}.pt"))
 
         train_target.append(torch.load(f"{DATA_PATH}/train_target_{i}.pt"))
@@ -28,13 +19,9 @@ def corrupt_mnist() -> tuple[torch.utils.data.Dataset, torch.utils.data.Dataset]
 
     train_target = torch.cat(train_target)
 
-
-
     test_images = torch.load(f"{DATA_PATH}/test_images.pt")
 
     test_target = torch.load(f"{DATA_PATH}/test_target.pt")
-
-
 
     train_images = train_images.unsqueeze(1).float()
 
@@ -44,22 +31,14 @@ def corrupt_mnist() -> tuple[torch.utils.data.Dataset, torch.utils.data.Dataset]
 
     test_target = test_target.long()
 
-
-
     train_set = torch.utils.data.TensorDataset(train_images, train_target)
 
     test_set = torch.utils.data.TensorDataset(test_images, test_target)
 
-
-
     return train_set, test_set
 
 
-
-
-
 def show_image_and_target(images: torch.Tensor, target: torch.Tensor) -> None:
-
     """Plot images and their labels in a grid."""
 
     row_col = int(len(images) ** 0.5)
@@ -69,7 +48,6 @@ def show_image_and_target(images: torch.Tensor, target: torch.Tensor) -> None:
     grid = ImageGrid(fig, 111, nrows_ncols=(row_col, row_col), axes_pad=0.3)
 
     for ax, im, label in zip(grid, images, target):
-
         ax.imshow(im.squeeze(), cmap="gray")
 
         ax.set_title(f"Label: {label.item()}")
@@ -79,11 +57,7 @@ def show_image_and_target(images: torch.Tensor, target: torch.Tensor) -> None:
     plt.show()
 
 
-
-
-
 if __name__ == "__main__":
-
     train_set, test_set = mnist()
 
     print(f"Size of training set: {len(train_set)}")
