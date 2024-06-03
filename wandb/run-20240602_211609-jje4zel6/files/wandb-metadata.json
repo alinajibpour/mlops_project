@@ -1,0 +1,53 @@
+{
+    "os": "Windows-10-10.0.19045-SP0",
+    "python": "3.12.3",
+    "heartbeatAt": "2024-06-02T19:16:09.990798",
+    "startedAt": "2024-06-02T19:16:09.466218",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "C:\\Users\\ra59xaf\\Desktop\\my_project\\mlops\\model.py",
+    "codePathLocal": "model.py",
+    "codePath": "model.py",
+    "git": {
+        "remote": "https://github.com/alinajibpour/mlops_project.git",
+        "commit": "f652cf87a0aac266db413d443738a28afc51f5a7"
+    },
+    "email": "ali.najibpour68@gmail.com",
+    "root": "C:/Users/ra59xaf/Desktop/my_project/mlops",
+    "host": "LMMISTA-CIP-230",
+    "username": "ra59xaf",
+    "executable": "C:\\Users\\ra59xaf\\AppData\\Local\\anaconda3\\envs\\mlops\\python.exe",
+    "cpu_count": 12,
+    "cpu_count_logical": 20,
+    "cpu_freq": {
+        "current": 2100.0,
+        "min": 0.0,
+        "max": 2100.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2100.0,
+            "min": 0.0,
+            "max": 2100.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 238.00878524780273,
+            "used": 214.3455467224121
+        }
+    },
+    "gpu": "NVIDIA GeForce RTX 3060",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce RTX 3060",
+            "memory_total": 12884901888
+        }
+    ],
+    "memory": {
+        "total": 63.67731475830078
+    }
+}
