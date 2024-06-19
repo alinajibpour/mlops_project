@@ -44,10 +44,10 @@ class MyAwesomeModel(pl.LightningModule):
         acc = (target == preds.argmax(dim=-1)).float().mean()
         self.log('train_loss', loss, prog_bar=True)
         self.log('train_acc', acc, prog_bar=True)
-        
+
         # Log non-scalar tensor
         self.logger.experiment.log({'logits': wandb.Histogram(preds.detach().cpu().numpy())})
-        
+
         return loss
 
     def validation_step(self, batch, batch_idx):
@@ -58,7 +58,7 @@ class MyAwesomeModel(pl.LightningModule):
         acc = (target == preds.argmax(dim=-1)).float().mean()
         self.log('val_loss', loss, prog_bar=True)
         self.log('val_acc', acc, prog_bar=True)
-        
+
         return {'val_loss': loss, 'val_acc': acc}
 
     def configure_optimizers(self):
@@ -69,7 +69,7 @@ def prepare_data():
     transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.1307,), (0.3081,))])
     mnist_train = datasets.MNIST(root=r'C:\Users\ra59xaf\Desktop\my_project', train=True, download=True, transform=transform)
     mnist_test = datasets.MNIST(root=r'C:\Users\ra59xaf\Desktop\my_project', train=False, download=True, transform=transform)
-    
+
     # Limit training data to 20%
     train_size = int(0.2 * len(mnist_train))
     val_size = len(mnist_train) - train_size
@@ -78,7 +78,7 @@ def prepare_data():
     train_loader = DataLoader(mnist_train, batch_size=64, shuffle=True)
     val_loader = DataLoader(mnist_val, batch_size=64, shuffle=False)
     test_loader = DataLoader(mnist_test, batch_size=64, shuffle=False)
-    
+
     return train_loader, val_loader, test_loader
 
 if __name__ == "__main__":
@@ -96,13 +96,13 @@ if __name__ == "__main__":
         save_top_k=3,
         mode='min'
     )
-    
+
     early_stopping_callback = EarlyStopping(
         monitor='val_loss',
         patience=3,
         mode='min'
     )
-    
+
     lr_monitor = LearningRateMonitor(logging_interval='step')
 
     trainer = pl.Trainer(
@@ -115,5 +115,3 @@ if __name__ == "__main__":
     )
     trainer.fit(model, train_loader, val_loader)
     trainer.test(model, test_loader)
-
-
